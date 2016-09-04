@@ -1,0 +1,15 @@
+{
+  "name": "freecodecamp",
+  "version": "1.0.0",
+  "description": "Learning javascript",
+  "main": "test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Antonios Hadjigeorgalis",
+  "license": "MIT",
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "*"
+  }
+}
