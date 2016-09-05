@@ -1,0 +1,9 @@
+body { padding-top: 70px; }
+figure { padding: 5%; }
+footer { padding: 5%; }
+.bg-color {
+  background-color: #eee;
+  border-radius: 5px;
+  border-style: solid;
+  border-width: thin;
+}
