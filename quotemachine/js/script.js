@@ -1,8 +1,15 @@
 $(document).ready(function(){
-  // there is only one button on this page
+  // there is only one button on this page $("button")
   // if there were more, I could identify with id using #id
   // or class by using button.class
-    $("button").click(function(){
+    getQuote();
+
+    $("#newquote").click(function(){
+      getQuote();
+    });
+});
+
+function getQuote() {
       $.ajax({
           url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
           type: 'POST', // The HTTP Method, can be GET POST PUT DELETE etc
@@ -16,18 +23,12 @@ $(document).ready(function(){
             xhr.setRequestHeader("Accept", "application/json");
           }
       });
-    });
-});
+}
 
-// function(data) { console.dir((data.source)); },
 function displayResponse(data) {
-        var items = [];
-        $.each( data, function( key, val ) {
-          items.push( "<li id='" + key + "'>" + val + "</li>" );
-        });
+  if (data.hasOwnProperty("quote"))
+    $( "#quote" ).html(data.quote);
 
-        $( "<ul/>", {
-          "class": "my-new-list",
-          html: items.join( "" )
-        }).appendTo( "body" );
-      };
+  if (data.hasOwnProperty("author"))
+    $( "#author" ).html(data.author);
+}
