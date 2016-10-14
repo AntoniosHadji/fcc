@@ -23,12 +23,17 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/script.js"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
     <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
       integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- font Awesome -->
     <script async src="https://use.fontawesome.com/ad58200bed.js"></script>
+    <!-- Twitter recommended the below snippet but I found that the line above
+         worked for creating the buttons with javascript -->
+    <!--    <script src="js/twitter.js"></script> -->
+    <script src="js/script.js"></script>
   </head>
   <body>
     <div class="container">
@@ -44,14 +49,14 @@
       <div class="row text-center">
         <button id="newquote" type="button" class="btn-lg btn-primary bottom-margin">Get New Quote</button>
       </div>
-      <div class="row well well-lg text-center">
+      <div id="q" class="row well well-lg text-center">
         <blockquote>
           <p id="quote">Quote</p>
           <footer id="author">Author</footer>
         </blockquote>
+        <div id="tweet"></div>
       </div>
     </div>
-
 
   </body>
 </html>
