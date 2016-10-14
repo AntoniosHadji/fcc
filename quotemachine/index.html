@@ -13,6 +13,30 @@
       integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="css/custom.css">
 
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <h1 class="text-center">
+          Random Quote Machine</br>
+          <small>
+            Quotes from
+            <a href="https://market.mashape.com/andruxnet">andruxnet</a>
+          </small>
+        </h1>
+      </div>
+      <div class="row text-center">
+        <button id="newquote" type="button" class="btn btn-lg btn-primary">Get New Quote</button>
+      </div>
+      <div id="q" class="row well well-lg text-center">
+        <blockquote>
+          <p id="quote">Quote</p>
+          <footer id="author">Author</footer>
+        </blockquote>
+        <div id="tweet"></div>
+      </div>
+    </div>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -34,29 +58,5 @@
          worked for creating the buttons with javascript -->
     <!--    <script src="js/twitter.js"></script> -->
     <script src="js/script.js"></script>
-  </head>
-  <body>
-    <div class="container">
-      <div class="row">
-        <h1 class="text-center">
-          Random Quote Machine</br>
-          <small>
-            Quotes from
-            <a href="https://market.mashape.com/andruxnet">andruxnet</a>
-          </small>
-        </h1>
-      </div>
-      <div class="row text-center">
-        <button id="newquote" type="button" class="btn-lg btn-primary bottom-margin">Get New Quote</button>
-      </div>
-      <div id="q" class="row well well-lg text-center">
-        <blockquote>
-          <p id="quote">Quote</p>
-          <footer id="author">Author</footer>
-        </blockquote>
-        <div id="tweet"></div>
-      </div>
-    </div>
-
   </body>
 </html>
