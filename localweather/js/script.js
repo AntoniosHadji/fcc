@@ -2,24 +2,23 @@ $(document).ready(function(){
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-     var url = 'http://api.openweathermap.org/data/2.5/weather?';
-      var params = {
-        units: 'metric',
-        APPID: '4291ac60d62260dc2669a67ad1bac8bf',
-        lat: position.coords.latitude,
-        lon: position.coords.longitude
-      };
-      var query = url + $.param(params);
+      var url = 'https://api.darksky.net/forecast/9fe5bc8b57a4d94356d5a54411335ecd/39.9984,-75.2712?units=si';
 
       $.getJSON(query, function(data) {
         // json was inspected manually before writing this code
         $( "#data" ).append("This is the current weather ");
         $( "#data" ).append("</br>");
-        $( "#data" ).append("<i class=".concat("'fa-5x wi wi-owm-", data.weather[0].id, "'></i>"));
-        $( "#data" ).append(data.weather[0].description);
+        switch (data.currently.icon) {
+          case "clear-day":
+            $( "#data" ).append("<i class=fa-5x wi wi-day-sunny></i>");
+            break;
+          default:
+            $( "#data" ).append("<i class=fa-5x wi wi-na></i>");
+        }
+        $( "#data" ).append(data.currently.summary);
         $( "#data" ).append("</br>");
-        $( "#data" ).append("Temperature: ".concat(data.main.temp, "ºC"));
-
+        $( "#data" ).append("Temperature: ".concat(data.currently.temperature));
+        $( "#data" ).append("<i class=fa-5x wi wi-celsius></i>");
       });
 
     });
