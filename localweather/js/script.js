@@ -2,7 +2,7 @@ $(document).ready(function(){
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var url = 'http://api.openweathermap.org/data/2.5/weather?';
+     var url = 'http://api.openweathermap.org/data/2.5/weather?';
       var params = {
         units: 'metric',
         APPID: '4291ac60d62260dc2669a67ad1bac8bf',
@@ -27,7 +27,7 @@ $(document).ready(function(){
     console.log("Geolocation Not Available.");
   }
 
-  $.get("http://ipinfo.io", function(response) {
+  $.get("https://ipinfo.io", function(response) {
     $( "#location" ).html("".concat(
       response.city, ", ", response.region, ",", response.country,
       "</br> Latitude, Longitude: ", response.loc));
