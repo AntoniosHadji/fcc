@@ -1,5 +1,12 @@
 $(document).ready(function(){
 
+  // this could be used if geolocation is not available in the browser
+  $.get("https://ipinfo.io", function(response) {
+    $( "#location" ).html("".concat(
+      response.city, ", ", response.region, ",", response.country,
+      "</br> Latitude, Longitude: ", response.loc));
+  }, "jsonp");
+
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
       var url = 
@@ -9,19 +16,38 @@ $(document).ready(function(){
 
       $.get(query, function(data) {
         // json was inspected manually before writing this code
-        $( "#data" ).append("This is the current weather ");
-        $( "#data" ).append("</br>");
+        $("#data").append(data.currently.summary);
+        $("#data").append("</br>");
         switch (data.currently.icon) {
           case "clear-day":
             $( "#data" ).append("<i class='fa-5x wi wi-day-sunny'></i>");
             break;
+          case "clear-night":
+            $( "#data" ).append("<i class='fa-5x wi wi-night-clear'></i>");
+            break;
+          case "rain":
+          case "snow":
+          case "sleet":
+          case "fog":
+          case "cloudy":
+            var icon = "".concat("<i class='fa-5x wi wi-",
+              data.currently.icon, "'></i>");
+            $( "#data" ).append(icon);
+            break;
+          case "partly-cloudy-day":
+            $( "#data" ).append("<i class='fa-5x wi wi-day-cloudy'></i>");
+            break;
+          case "partly-cloudy-night":
+            $( "#data" ).append("<i class='fa-5x wi wi-night-partly-cloudy'></i>");
+            break;
+          case "wind":
+            $( "#data" ).append("<i class='fa-5x wi wi-windy'></i>");
+            break;
           default:
             $( "#data" ).append("<i class='fa-5x wi wi-na'></i>");
         }
-        $("#data").append(data.currently.summary);
-        $("#data").append("</br>");
-        $("#data").append("Temperature: ".concat(data.currently.temperature));
-        $("#data").append("<i class='fa-5x wi wi-celsius'></i>");
+        $("#temperature").append("Temperature: ".concat(data.currently.temperature));
+        $("#temperature").append("<i class='fa-5x wi wi-celsius'></i>");
       }, "jsonp");
 
     });
@@ -29,11 +55,6 @@ $(document).ready(function(){
     console.log("Geolocation Not Available.");
   }
 
-  $.get("https://ipinfo.io", function(response) {
-    $( "#location" ).html("".concat(
-      response.city, ", ", response.region, ",", response.country,
-      "</br> Latitude, Longitude: ", response.loc));
-  }, "jsonp");
 
 });
 
