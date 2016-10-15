@@ -4,7 +4,7 @@ $(document).ready(function(){
     navigator.geolocation.getCurrentPosition(function(position) {
       var url = 'https://api.darksky.net/forecast/9fe5bc8b57a4d94356d5a54411335ecd/39.9984,-75.2712?units=si';
 
-      $.getJSON(query, function(data) {
+      $.getJSON(url, function(data) {
         // json was inspected manually before writing this code
         $( "#data" ).append("This is the current weather ");
         $( "#data" ).append("</br>");
