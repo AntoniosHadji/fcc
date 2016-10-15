@@ -2,24 +2,27 @@ $(document).ready(function(){
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var url = 'https://api.darksky.net/forecast/9fe5bc8b57a4d94356d5a54411335ecd/39.9984,-75.2712?units=si';
+      var url = 
+        'https://api.darksky.net/forecast/9fe5bc8b57a4d94356d5a54411335ecd/';
+      var query = url + position.coords.latitude + ',' +
+        position.coords.longitude + '?units=si';
 
-      $.getJSON(url, function(data) {
+      $.get(query, function(data) {
         // json was inspected manually before writing this code
         $( "#data" ).append("This is the current weather ");
         $( "#data" ).append("</br>");
         switch (data.currently.icon) {
           case "clear-day":
-            $( "#data" ).append("<i class=fa-5x wi wi-day-sunny></i>");
+            $( "#data" ).append("<i class='fa-5x wi wi-day-sunny'></i>");
             break;
           default:
-            $( "#data" ).append("<i class=fa-5x wi wi-na></i>");
+            $( "#data" ).append("<i class='fa-5x wi wi-na'></i>");
         }
-        $( "#data" ).append(data.currently.summary);
-        $( "#data" ).append("</br>");
-        $( "#data" ).append("Temperature: ".concat(data.currently.temperature));
-        $( "#data" ).append("<i class=fa-5x wi wi-celsius></i>");
-      });
+        $("#data").append(data.currently.summary);
+        $("#data").append("</br>");
+        $("#data").append("Temperature: ".concat(data.currently.temperature));
+        $("#data").append("<i class='fa-5x wi wi-celsius'></i>");
+      }, "jsonp");
 
     });
   } else {
