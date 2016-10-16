@@ -60,11 +60,11 @@ $(document).ready(function(){
 
   $( "#units" ).click(function() {
     if ($.trim($( this ).text()) === "Switch to US Units") {
-      $("#temperature").html(convert(holdtemp, "F"));
+      $("#temperature").html(convert(holdtemp, "F").toFixed(2));
       $("#temperature").append("<i class='wi wi-fahrenheit'></i>");
       $( this ).text("Switch to SI Units");
     } else {
-      $("#temperature").html(convert(holdtemp, "C"));
+      $("#temperature").html(convert(holdtemp, "C").toFixed(2));
       $("#temperature").append("<i class='wi wi-celsius'></i>");
       $( this ).text("Switch to US Units");
     }
