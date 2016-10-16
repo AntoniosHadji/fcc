@@ -4,14 +4,19 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <!-- The above 3 meta tags *must* come first in the head;
+      any other head content must come *after* these tags -->
     <title>Local Weather</title>
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-      integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
+    <link rel="stylesheet" type="text/css" crossorigin="anonymous"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">
+    <!-- Google Fonts -->
+    <link  rel="stylesheet" type="text/css"
+           href="https://fonts.googleapis.com/css?family=Roboto">
+    <!-- Custom css -->
     <link rel="stylesheet" href="./css/weather-icons.min.css">
     <link rel="stylesheet" href="./css/custom.css">
   </head>
@@ -31,6 +36,9 @@
         <div id="temperature"></div>
         <div id="data"></div>
       </div>
+      <div class="row col-md-12 text-center">
+        <a href="https://darksky.net/poweredby/">Powered by Dark Sky</a>
+      </div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -41,7 +49,7 @@
       integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <!-- font Awesome -->
     <script async src="https://use.fontawesome.com/ad58200bed.js"></script>
-
+    <!-- Custom scripting -->
     <script src="js/script.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
