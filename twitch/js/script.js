@@ -11,6 +11,8 @@ var users = [
   "comster404"
 ]
 
+var url = "https://wind-bow.hyperdev.space/twitch-api/";
+
 $( document ).ready( function() {
 
   $.each(users, function( index, value ){
@@ -45,6 +47,7 @@ $( document ).ready( function() {
           "<p class='list-group-item-text'>" + result  + "</p>" +
           "</a>");
 
+      console.log(data.error);
       console.dir(data);
     })
 
