@@ -1,4 +1,18 @@
 body {
   font-family: 'Roboto', sans-serif;
 }
+img.fcc {
+  background-color: #006400;
+}
 
+.on {
+  background-color: greenyellow;
+}
+
+.off {
+  background-color: red;
+}
+
+.not-a-member {
+  background-color: grey;
+}
