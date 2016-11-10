@@ -2,3 +2,11 @@ body {
   font-family: 'Roboto', sans-serif;
 }
 
+.key {
+  font-family: monospace;
+  margin-bottom:  2px;
+}
+
+.equals {
+  width: 200px;
+}
