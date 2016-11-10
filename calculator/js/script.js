@@ -1,3 +1,4 @@
+/*jshint globalstrict: true*/
 'use strict';
 
 // this is the module pattern of code encapsulation
@@ -42,9 +43,18 @@ function processKeyPress() {
     $( '#result' ).html( $( this ).text() );
   } else {
     $( '#result' ).append( $( this ).text() );
-  };
+  }
 }
 
-$( document ).ready( onReady );
+//$( document ).ready( onReady );
+// more concise setup of the above line
+// http://learn.jquery.com/using-jquery-core/avoid-conflicts-other-libraries/#use-the-argument-that-39-s-passed-to-the-jquery-document-ready-function
+// $ is alias for jQuery unless it has been taken over by another library
+// loaded after jQuery
+$(function($) {
 
-$( 'a' ).click( processKeyPress );
+  $( 'a' ).click( processKeyPress );
+
+});
+
+
