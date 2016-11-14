@@ -46,12 +46,12 @@ function processKeyPress() {
   }
 }
 
-//$( document ).ready( onReady );
-// more concise setup of the above line
 // http://learn.jquery.com/using-jquery-core/avoid-conflicts-other-libraries/#use-the-argument-that-39-s-passed-to-the-jquery-document-ready-function
 // $ is alias for jQuery unless it has been taken over by another library
 // loaded after jQuery
-$(function($) {
+$( document ).ready( function() {
+// more concise setup of the above line
+//$(function($) {
 
   $( 'a' ).click( processKeyPress );
 
