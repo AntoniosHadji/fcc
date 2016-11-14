@@ -1,17 +1,25 @@
 function calculate(exp) {
   var result = 0;
-  result = exp.split('+');
+  result = exp.split(/[-+*\/=]/);
 
   return result;
 }
 
-function string2Array(exp) {
+function parseExpression(exp) {
   var arr = [];
+  var operators = ['-', '+', '*', '/', '=', '.'];
 
   for (i=0; i<exp.length; i++) {
     var item = exp.charAt(i);
-    if (
-    arr.push(exp.charAt(i));
+    if (operators.indexOf(item) === -1) {
+      if (i>0 && typeof arr[i-1] === 'number') {
+        arr[i-1] = arr[i-1]*10 + parseInt(item);
+      } else {
+        arr.push(parseInt(item));
+      }
+    } else {
+      arr.push(item);
+    }
   }
   return arr;
 }
