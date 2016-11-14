@@ -3,7 +3,8 @@
         "browser",
         "jquery",
         "underscore",
-        "chai"
+        "chai",
+        "qunitjs"
             ],
         "plugins": {
           "node": {}
