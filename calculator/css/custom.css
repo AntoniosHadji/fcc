@@ -5,8 +5,15 @@ body {
 .key {
   font-family: monospace;
   margin-bottom:  2px;
+  width: 50px;
+  background-color: lightgrey;
 }
 
-.equals {
-  width: 200px;
+.equalkey {
+  width: 210px;
 }
+
+.startheight {
+  height: 75px;
+}
+

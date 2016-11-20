@@ -10,6 +10,8 @@
   "license": "MIT",
   "devDependencies": {
     "chai": "*",
+    "eslint": "^3.10.2",
+    "eslint-config-google": "^0.7.0",
     "mocha": "*"
   }
 }
