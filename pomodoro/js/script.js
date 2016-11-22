@@ -1,7 +1,6 @@
 // Pomodoro clock
 // Questions: How to used timers?
 
-let stopTime = new Date(); //moment().add(25, 'minutes');
 
 function getTimeRemaining(endtime){
   let t = Date.parse(endtime) - Date.parse(new Date());
@@ -23,7 +22,9 @@ function getTimeRemaining(endtime){
  */
 function onReady() {
   console.log('onReady');
-  $( '#pomodoro' ).html( 'time: ' + stopTime.toLocaleTimeString() );
+  let stopTime = moment().add(25, 'minutes');
+  $( '#pomodoro' ).html( 'time: ' + stopTime.format() + '</br>' );
+
 };
 
 $( document ).ready( onReady );
