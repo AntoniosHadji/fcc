@@ -5,6 +5,7 @@ body {
 }
 
 #pomodoro {
+  /* https://drafts.csswg.org/css-values/#viewport-relative-lengths */
   font-size: 10vw;
   line-height: 1;
 }
