@@ -4,11 +4,6 @@ body {
   padding-top: 70px;
 }
 
-#pomodoro {
-  /* https://drafts.csswg.org/css-values/#viewport-relative-lengths */
-  font-size: 10vw;
-  line-height: 1;
-}
 
 
 .col-centered{
@@ -17,6 +12,12 @@ body {
 }
 
 /* @media (min-width: @screen-sm-min) { */
+#pomodoro {
+  /* https://drafts.csswg.org/css-values/#viewport-relative-lengths */
+  font-size: 10vw;
+  line-height: 1;
+}
+
 .param-name {
   width: 180px;
   text-align: right;
