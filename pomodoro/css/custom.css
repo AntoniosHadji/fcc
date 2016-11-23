@@ -4,14 +4,20 @@ body {
   padding-top: 70px;
 }
 
-.time {
-  font-size: 10em;
+#pomodoro {
+  font-size: 5em;
 }
 
-.label-width {
-  width: 200px;
+.param-name {
+  width: 180px;
+  text-align: right;
 }
 
-.value-width {
+.btn-width {
   width: 120px;
+}
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
 }
