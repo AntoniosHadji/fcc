@@ -8,17 +8,21 @@ body {
   font-size: 5em;
 }
 
+
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
+/* @media (min-width: @screen-sm-min) { */
 .param-name {
   width: 180px;
   text-align: right;
 }
 
 .btn-width {
-  width: 120px;
+  width: 70px;
 }
 
-.col-centered{
-    margin: 0 auto;
-    float: none;
-}
+/*} */
 /* vim: set fdm=marker fmr={,}: */

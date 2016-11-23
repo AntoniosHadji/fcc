@@ -49,6 +49,7 @@
     <div class="container">
 
       <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
 
         <div class="input-group input-group-lg">
           <div class="input-group-addon param-name">Pomodoro Length: </div>
@@ -56,13 +57,15 @@
                             type="number" min="30" max="120" value="25"
                                                             aria-describedby="desc-pomodoro-time"/>
           <span class="input-group-btn">
-            <button id="startTimer" class="btn btn-default btn-width disabled">Start</button>
+            <button id="startTimer" class="btn btn-success btn-width disabled">Start</button>
           </span>
         </div>
 
+        </div>
       </div>
 
       <div class="row">
+        <div class="col-lg-6 col-lg-offset-3">
 
         <div class="input-group input-group-lg">
           <div class="input-group-addon param-name">Break Length: </div>
@@ -70,10 +73,11 @@
                             type="number" min="5" max="30" value="5"
                                                            aria-describedby="desc-break-time"/>
           <span class="input-group-btn">
-            <button id="resetTimer" type="button" class="btn btn-default btn-width disabled">Reset</button>
+            <button id="resetTimer" type="button" class="btn btn-danger btn-width disabled">Reset</button>
           </span>
         </div>
 
+        </div>
       </div>
 
       <div id="pomodoro" class="row text-center"></div>
