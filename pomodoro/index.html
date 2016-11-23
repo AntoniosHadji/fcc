@@ -43,8 +43,24 @@
       </div><!-- /.container-fluid -->
     </nav>
 
-    <button id="start-timer" type="submit" class="btn btn-default">Start</button>
-    <div id="pomodoro">placeholder</div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon label-width">Pomodoro Length: </span>
+      <input id="ptime" class="form-control value-width" placeholder="Minutes"
+             type="number" min="0" max="120" value="25"
+             aria-describedby="desc-pomodoro-time"/>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon label-width">Break Length: </span>
+      <input id="btime" class="form-control value-width" placeholder="Minutes"
+             type="number" min="0" max="30" value="5"
+             aria-describedby="desc-break-time"/>
+    </div>
+    <div class="input-group input-group-lg">
+      <span class="input-group-btn">
+        <button class="btn btn-default" type="button">Start</button>
+      </span>
+    </div>
+    <div id="pomodoro" class="text-center time">.</div>
 
     <footer>
       <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
@@ -55,9 +71,8 @@
                     integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
       <!-- font Awesome -->
       <script async src="https://use.fontawesome.com/ad58200bed.js"></script>
-      <!-- javascript date parsing library -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.16.0/moment.min.js"></script>
       <!-- Custom scripting -->
+      <script src="./js/countdown.js"></script>
       <script src="./js/script.js"></script>
       <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
       <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

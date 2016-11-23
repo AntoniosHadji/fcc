@@ -1,6 +1,17 @@
 body {
   font-family: 'Roboto', sans-serif;
   /* body padding for fixed nav bar */
-  padding-top: 70px; 
+  padding-top: 70px;
 }
 
+.time {
+  font-size: 10em;
+}
+
+.label-width {
+  width: 200px;
+}
+
+.value-width {
+  width: 120px;
+}
