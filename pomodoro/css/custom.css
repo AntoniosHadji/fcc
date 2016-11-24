@@ -4,28 +4,29 @@ body {
   padding-top: 70px;
 }
 
-
-
-.col-centered{
-    margin: 0 auto;
-    float: none;
-}
-
-/* @media (min-width: @screen-sm-min) { */
 #pomodoro {
   /* https://drafts.csswg.org/css-values/#viewport-relative-lengths */
   font-size: 10vw;
   line-height: 1;
 }
 
+.col-centered{
+    margin: 0 auto;
+    float: none;
+}
+
 .param-name {
-  width: 180px;
+  width: 50%;
   text-align: right;
 }
 
-.btn-width {
-  width: 70px;
+@media (min-width: @screen-sm-min) {
+
 }
 
-/*} */
+
+
+.test {
+  background-color: lightgrey
+}
 /* vim: set fdm=marker fmr={,}: */
