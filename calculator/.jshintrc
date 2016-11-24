@@ -1,7 +1,0 @@
-{
-  "undef":  true,
-  "unused": true,
-  "jquery": true,
-  "devel":  true,
-  "browser":true
-}
