@@ -37,6 +37,7 @@ var player = {
     // console.log(event.target.innerText);
     $( event.target ).text( app.player );
     computer.play();
+
   },
 
 };
