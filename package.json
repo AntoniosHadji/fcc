@@ -4,7 +4,6 @@
   "description": "Learning javascript",
   "main": "test.js",
   "scripts": {
-    "test": "xo"
   },
   "author": "Antonios Hadjigeorgalis",
   "license": "MIT",
@@ -12,16 +11,9 @@
     "chai": "*",
     "eslint": "^3.10.2",
     "eslint-config-google": "^0.7.0",
-    "mocha": "*",
-    "xo": "^0.17.1"
+    "mocha": "*"
   },
   "dependencies": {
     "moment": "^2.17.0"
-  },
-  "xo": {
-    "envs": [ "jquery", "browser", "qunit" ],
-    "esnext": true,
-    "globals": ["moment"],
-    "space": true
-  },
+  }
 }
