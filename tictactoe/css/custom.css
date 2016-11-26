@@ -1,39 +1,75 @@
 body {
   font-family: 'Roboto', sans-serif;
   /* body padding for fixed nav bar */
-  padding-top: 70px;
+  /* padding-top: 70px; */
 }
 
+.squares {
+  float: left;
+  width: 33.333%;
+  padding-bottom: 33.333%; /* = width for a 1:1 aspect ratio */
+  position: relative;
+  overflow: hidden;
+}
 
+.content {
+  position:absolute;
+  height:100%;
+  width:100%;
+  text-align:center;
+}
 
+.table {
+    display:table;
+    height:100%;
+    width:100%;
+}
 
+.table-cell {
+    display:table-cell;
+    vertical-align:middle;
+    font-weight:900; /* 900 = boldest */
+    font-size: 16vw;
+}
+
+.table-cell:hover {
+  background-color: lightgrey;
+}
+
+#tl, #tm, #ml, #mm {
+  border-right-style: solid;
+  border-bottom-style: solid;
+}
+
+#tr, #mr {
+  border-bottom-style: solid;
+}
+
+#bl, #bm {
+  border-right-style: solid;
+}
 
 @media print {
   /* print style sheets go here */
 }
 
-/* Custom, iPhone Retina */
 @media only screen and (min-width : 320px) {
-
+/* iPhone Retina */
 }
 
-/* Extra Small Devices, Phones */
 @media only screen and (min-width : 480px) {
-
+/* Extra Small Devices, Phones */
 }
 
-/* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
-
+/* Small Devices, Tablets */
 }
 
-/* Medium Devices, Desktops */
 @media only screen and (min-width : 992px) {
-
-}
-
-/* Large Devices, Wide Screens */
-@media only screen and (min-width : 1200px) {
+/* Medium Devices, Desktops */
+  .container {
+    width: 800px;
+  }
 
 }
 
@@ -41,4 +77,5 @@ body {
 .test {
   background-color: lightgrey
 }
-/* vim: set fdm=marker fmr={,}: */
+
+/* vim: set fdm=syntax: */
