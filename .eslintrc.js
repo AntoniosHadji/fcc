@@ -3,4 +3,7 @@ module.exports = {
   'rules': {
     'no-var': 'off',
   },
+  "parserOptions": {
+    "ecmaVersion": 6
+  }
 };

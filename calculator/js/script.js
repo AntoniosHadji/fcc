@@ -12,7 +12,7 @@ function calculateExpression(exp) {
   let ops = exp.split(/[0-9\.]+/);
   // remove first element === ''
   ops.shift();
-  //remove last element === ''
+  // remove last element === ''
   ops.pop();
 
   doOperation('*', numbers, ops);
@@ -23,11 +23,16 @@ function calculateExpression(exp) {
   return numbers[0];
 }
 
+/**
+ *  doOperation
+ *  @param {number} op
+ *  @param {number} num
+ *  @param {array} ops
+ * **/
 function doOperation(op, num, ops) {
   let i = ops.indexOf(op);
   while (i !== -1) {
-
-    let values = num.splice(i,2);
+    let values = num.splice(i, 2);
     let calc = c(op);
 
     num.splice(i, 0, calc(values[0], values[1]));
@@ -39,21 +44,29 @@ function doOperation(op, num, ops) {
 function c(op) {
   switch (op) {
     case '/':
-      return function(a,b) { return a/b; };
+      return function(a, b) {
+        return a/b;
+      };
       // break not required because return passes control out of the function
     case '*':
-      return function(a,b) { return a*b; };
+      return function(a, b) {
+        return a*b;
+      };
     case '+':
-      return function(a,b) { return 1*a+1*b; };
+      return function(a, b) {
+        return 1*a+1*b;
+      };
     case '-':
-      return function(a,b) { return a-b; };
+      return function(a, b) {
+        return a-b;
+      };
   }
 }
 
 // extract value from button pressed and take appropriate action
 function processNumKeyPress(event) {
   isLastKeyPressOps = false;
-  if ( $( '#result' ).text().trim() === '' ){
+  if ( $( '#result' ).text().trim() === '' ) {
     $( '#result' ).html( $( this ).text() );
   } else {
     $( '#result' ).append( $( this ).text() );
@@ -92,4 +105,4 @@ $( document ).ready( onReady );
 // $ is alias for jQuery unless it has been taken over by another library
 // loaded after jQuery
 // more concise setup of the above line
-//$(function($) { 
+// $(function($) {

@@ -73,6 +73,9 @@ body {
 
 }
 
+#myModal {
+  opacity:0.9 !important;
+}
 
 .test {
   background-color: lightgrey
