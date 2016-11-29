@@ -3,6 +3,9 @@ module.exports = {
   'rules': {
   },
   'parserOptions': {
-    'ecmaVersion': 6
-  }
+    'ecmaVersion': 6,
+  },
 };
+
+// breaks gulp run of eslint
+// 'no-var': 'off',
