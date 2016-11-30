@@ -35,7 +35,7 @@
 
   if ('serviceWorker' in window.navigator &&
     (window.location.protocol === 'https:' || isLocalhost)) {
-      window.navigator.serviceWorker.register('service-worker.js')
+    window.navigator.serviceWorker.register('service-worker.js')
         .then(function(registration) {
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
@@ -74,7 +74,7 @@
         }).catch(function(e) {
           console.error('Error during service worker registration:', e);
         });
-    }
+  }
 
   // Your custom JavaScript goes here
 
@@ -89,7 +89,7 @@
     'button-green',
     'button-red',
     'button-yellow',
-    'button-blue',
+    'button-blue'
   ];
   app.gameOn = false;
   app.playersTurn = true;
@@ -105,7 +105,7 @@
     app.resetGame();
   }, false);
 
-  app.resetGame = function(event) {
+  app.resetGame = function() {
     console.log('reset');
     app.gameOn = false;
     app.sequence = [];
@@ -116,7 +116,7 @@
     app.nextPlay();
   }, false);
 
-  app.nextPlay = function(e) {
+  app.nextPlay = function() {
     console.log('nextPlay');
     app.clearWin();
     app.gameOn = true;
@@ -145,18 +145,16 @@
     if (app.gameOn && app.playersTurn) {
       app.play(e.target.id);
       app.isCorrect(e.target.id);
-    } else {
-      if (!app.gameOn) {
-        app.updateTitle('Game not Started');
-      } else if (!app.playersTurn) {
-        app.updateTitle('Not your turn');
-      }
+    } else if (!app.gameOn) {
+      app.updateTitle('Game not Started');
+    } else if (!app.playersTurn) {
+      app.updateTitle('Not your turn');
     }
   };
 
   app.updateTitle = function(message) {
-      let t = document.getElementById('title');
-      t.innerHTML = 'Simon - ' + message;
+    let t = document.getElementById('title');
+    t.innerHTML = 'Simon - ' + message;
   };
 
   app.isCorrect = function(id) {
@@ -165,13 +163,13 @@
       console.log(
         `correct: app.counter:${app.counter} sequence: ${app.sequence.length}`);
 
-      app.updateTitle(`Correct for ${app.counter+1} steps`);
+      app.updateTitle(`Correct for ${app.counter + 1} steps`);
 
-      if ( app.counter === app.sequence.length - 1 ) {
+      if (app.counter === app.sequence.length - 1) {
         console.log('end of sequence');
 
-        if (app.sequence.length < 20 ) {
-          window.setTimeout( function() {
+        if (app.sequence.length < 20) {
+          window.setTimeout(function() {
             app.nextPlay();
           }, 2000);
         } else {
@@ -187,16 +185,16 @@
       let el = document.getElementById(id);
       el.className += ' wrong-square';
       document.getElementById('sound-wrong').play();
-      window.setTimeout( function() {
+      window.setTimeout(function() {
         el.className = el.className.replace(' wrong-square', '');
       }, 1000);
 
       if (app.strictMode) {
-        window.setTimeout( function() {
+        window.setTimeout(function() {
           app.resetGame();
         }, 2000);
       } else {
-        window.setTimeout( function() {
+        window.setTimeout(function() {
           app.playSequence(0);
         }, 2000);
       }
@@ -228,9 +226,9 @@
   app.playSequence = function(i) {
     if (i < app.sequence.length) {
       app.play(app.buttons[app.sequence[i]]);
-      window.setTimeout( function() {
+      window.setTimeout(function() {
         console.log('i: ' + i);
-        app.playSequence(i+1);
+        app.playSequence(i + 1);
       }, 1000);
     } else {
       app.playersTurn = true;
@@ -246,15 +244,14 @@
       'Steps: ' + app.sequence.length;
   };
 
-
   /**
   *  Using Math.round() will give you a non-uniform distribution!
-  *  @param {integer} max
-  *  @param {integer} min
+  *  @param {integer} max maximum value
+  *  @param {integer} min minimum value
   *  @return {number} - Returns a random integer between 0 and max (inclusive)
   */
   function getRandomIntInclusive(max, min) {
-    min = min || 0; // Math.ceil(min);
+    min = min || 0;
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
@@ -263,4 +260,4 @@
     console.log('loaded javascript');
     app.setupSquareEventListeners();
   };
-})(window, document);
+})();
