@@ -33,9 +33,9 @@
     )
 );
 
-  if ('serviceWorker' in navigator &&
+  if ('serviceWorker' in window.navigator &&
     (window.location.protocol === 'https:' || isLocalhost)) {
-      navigator.serviceWorker.register('service-worker.js')
+      window.navigator.serviceWorker.register('service-worker.js')
         .then(function(registration) {
           // updatefound is fired if service-worker.js changes.
           registration.onupdatefound = function() {
@@ -44,7 +44,7 @@
             // and there's no need to prompt for a reload at that point.
             // So check here to see if the page is already controlled,
             // i.e. whether there's an existing service worker.
-            if (navigator.serviceWorker.controller) {
+            if (window.navigator.serviceWorker.controller) {
               // The updatefound event implies that registration.installing is
               // set:
               // https://slightlyoff.github.io/ServiceWorker/spec/service_worker/index.html#service-worker-container-updatefound-event
@@ -92,7 +92,7 @@
     'button-blue',
   ];
   app.gameOn = false;
-  app.playersTurn = false;
+  app.playersTurn = true;
   // keep track of players sequence
   app.counter = 0;
 
@@ -101,11 +101,37 @@
     console.log('strictMode: ' + app.strictMode);
   });
 
-  document.getElementById('reset-button').addEventListener('click',
-    app.resetGame, false);
+  document.getElementById('reset-button').addEventListener('click', function() {
+    app.resetGame();
+  }, false);
 
-  document.getElementById('start-button').addEventListener('click',
-    app.nextPlay, false);
+  app.resetGame = function(event) {
+    console.log('reset');
+    app.gameOn = false;
+    app.sequence = [];
+    document.getElementById('step-counter').innerHTML = 'Steps: 00';
+  };
+
+  document.getElementById('start-button').addEventListener('click', function() {
+    app.nextPlay();
+  }, false);
+
+  app.nextPlay = function(e) {
+    console.log('nextPlay');
+    app.clearWin();
+    app.gameOn = true;
+    app.playersTurn = false;
+    app.createSequence();
+    app.playSequence(0);
+    console.log(`current sequence: ${app.sequence}`);
+  };
+
+  app.clearWin = function() {
+    let t = document.getElementById('title');
+    if (t.innerHTML.endsWith('!!')) {
+      t.innerHTML = 'Simon';
+    }
+  };
 
   app.setupSquareEventListeners = function() {
     let sqrCollection = document.getElementsByClassName('squares');
@@ -120,7 +146,11 @@
       app.play(e.target.id);
       app.isCorrect(e.target.id);
     } else {
-      app.updateTitle('Game not Started');
+      if (!app.gameOn) {
+        app.updateTitle('Game not Started');
+      } else if (!app.playersTurn) {
+        app.updateTitle('Not your turn');
+      }
     }
   };
 
@@ -135,11 +165,12 @@
       console.log(
         `correct: app.counter:${app.counter} sequence: ${app.sequence.length}`);
 
+      app.updateTitle(`Correct for ${app.counter+1} steps`);
+
       if ( app.counter === app.sequence.length - 1 ) {
         console.log('end of sequence');
 
         if (app.sequence.length < 20 ) {
-          app.updateTitle(`Correct for ${app.sequence.length} steps`);
           window.setTimeout( function() {
             app.nextPlay();
           }, 2000);
@@ -151,6 +182,7 @@
         }
       }
     } else {
+      app.updateTitle(`Wrong on step # ${app.counter}`);
       console.log('wrong');
       let el = document.getElementById(id);
       el.className += ' wrong-square';
@@ -193,15 +225,6 @@
     }, 500);
   };
 
-
-  app.nextPlay = function(event) {
-    app.gameOn = true;
-    app.playersTurn = false;
-    app.createSequence();
-    app.playSequence(0);
-    console.log(`current sequence: ${app.sequence}`);
-  };
-
   app.playSequence = function(i) {
     if (i < app.sequence.length) {
       app.play(app.buttons[app.sequence[i]]);
@@ -212,6 +235,7 @@
     } else {
       app.playersTurn = true;
       app.counter = 0;
+      console.log(`game: ${app.gameOn} player: ${app.playersTurn}`);
     }
   };
 
@@ -222,12 +246,6 @@
       'Steps: ' + app.sequence.length;
   };
 
-  app.resetGame = function(event) {
-    console.log('reset');
-    app.gameOn = false;
-    app.sequence = [];
-    document.getElementById('step-counter').innerHTML = 'Steps: 00';
-  };
 
   /**
   *  Using Math.round() will give you a non-uniform distribution!
