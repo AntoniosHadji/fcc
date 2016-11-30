@@ -1,0 +1,43 @@
+
+
+.squares {
+  background-color: grey;
+  float: left;
+  overflow: hidden;
+  padding-bottom: 50%;
+  position: relative;
+  width: 50%;
+}
+
+.g {
+  background-color: green;
+  border-top-left-radius: 100%;
+}
+
+.r {
+  background-color: red;
+  border-top-right-radius: 100%;
+}
+
+.y {
+  background-color: yellow;
+  border-bottom-left-radius: 100%;
+}
+
+.b {
+  background-color: blue;
+  border-bottom-right-radius: 100%;
+}
+
+.mdl-cell {
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.center {
+  text-align: center;
+}
+
+.shift-color {
+  opacity: .5;
+}
