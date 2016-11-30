@@ -37,6 +37,12 @@ import pkg from './package.json';
 const $ = gulpLoadPlugins();
 const reload = browserSync.reload;
 
+// deploy task
+gulp.task('deploy', ['default'], () => {
+  return gulp.src('dist/**/*')
+    .pipe($.ghPages());
+});
+
 // Lint JavaScript
 gulp.task('lint', () =>
   gulp.src(['app/scripts/**/*.js','!node_modules/**'])
@@ -271,4 +277,4 @@ gulp.task('generate-service-worker', ['copy-sw-scripts'], () => {
 
 // Load custom tasks from the `tasks` directory
 // Run: `npm install --save-dev require-dir` from the command-line
-try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
+// try { require('require-dir')('tasks'); } catch (err) { console.error(err); }
