@@ -16,8 +16,8 @@
  *  limitations under the License
  *
  */
-/* eslint-env browser */
-(function() {
+
+(function(window, document) {
   'use strict';
 
   // Check to make sure service workers are supported in the current browser,
@@ -82,7 +82,7 @@
 
   // hold strictMode boolean (change on event switch1.change)
   app.strictMode = document.getElementById('switch1').checked;
-  // hold sequence of values
+  // hold sequence of values 0-3
   app.sequence = [];
   // index list of buttons 0-3
   app.buttons = [
@@ -92,35 +92,93 @@
     'button-blue',
   ];
   app.gameOn = false;
+  app.playersTurn = false;
+  // keep track of players sequence
+  app.counter = 0;
 
   document.getElementById('switch1').addEventListener('change', function(e) {
     app.strictMode = e.target.checked;
-    console.log(app.strictMode);
+    console.log('strictMode: ' + app.strictMode);
   });
 
-  document.getElementById('reset-button').addEventListener('click', function() {
-    app.resetGame();
-  });
+  document.getElementById('reset-button').addEventListener('click',
+    app.resetGame, false);
 
-  document.getElementById('start-button').addEventListener('click', function() {
-    app.startGame();
-  });
+  document.getElementById('start-button').addEventListener('click',
+    app.nextPlay, false);
 
-  let sqrCollection = document.getElementsByClassName('squares');
-  for (let i = 0; i < sqrCollection.length; i++) {
-    console.log('event handler added for: ' + sqrCollection.item(i).id);
+  app.setupSquareEventListeners = function() {
+    let sqrCollection = document.getElementsByClassName('squares');
+    for (let i = 0; i < sqrCollection.length; i++) {
+      sqrCollection.item(i).addEventListener('click', app.squareClickEvent);
+      console.log('event handler added for: ' + sqrCollection.item(i).id);
+    }
+  };
 
-    sqrCollection.item(i).addEventListener('click', function(e) {
-      if (app.gameOn) app.play(e.target.id);
-    });
-  }
+  app.squareClickEvent = function(e) {
+    if (app.gameOn && app.playersTurn) {
+      app.play(e.target.id);
+      app.isCorrect(e.target.id);
+    } else {
+      app.updateTitle('Game not Started');
+    }
+  };
+
+  app.updateTitle = function(message) {
+      let t = document.getElementById('title');
+      t.innerHTML = 'Simon - ' + message;
+  };
+
+  app.isCorrect = function(id) {
+    let index = app.buttons.indexOf(id);
+    if (index === app.sequence[app.counter]) {
+      console.log(
+        `correct: app.counter:${app.counter} sequence: ${app.sequence.length}`);
+
+      if ( app.counter === app.sequence.length - 1 ) {
+        console.log('end of sequence');
+
+        if (app.sequence.length < 20 ) {
+          app.updateTitle(`Correct for ${app.sequence.length} steps`);
+          window.setTimeout( function() {
+            app.nextPlay();
+          }, 2000);
+        } else {
+          app.updateTitle(
+            `Correct for ${app.sequence.length} steps!! You Win!!`
+          );
+          app.resetGame();
+        }
+      }
+    } else {
+      console.log('wrong');
+      let el = document.getElementById(id);
+      el.className += ' wrong-square';
+      document.getElementById('sound-wrong').play();
+      window.setTimeout( function() {
+        el.className = el.className.replace(' wrong-square', '');
+      }, 1000);
+
+      if (app.strictMode) {
+        window.setTimeout( function() {
+          app.resetGame();
+        }, 2000);
+      } else {
+        window.setTimeout( function() {
+          app.playSequence(0);
+        }, 2000);
+      }
+    }
+    app.counter++;
+    console.log(`count: ${app.counter}`);
+  };
 
   app.play = function(id) {
     // get square by id
     let el = document.getElementById(id);
     // get color of square from preset id name
     let color = id.substr(7);
-    console.log(id, color);
+    console.log(`id: ${id}, sound: ${color}`);
 
     // add css class to lighten color (white background + opacity)
     el.className += ' shift-color';
@@ -129,23 +187,32 @@
     document.getElementById('sound-' + color).play();
 
     // create a timer to return color to normal 300ms is enough to notice
+    // setTimeout executes the function after the specified time
     window.setTimeout(function() {
       el.className = el.className.replace(' shift-color', '');
     }, 500);
   };
 
-  app.resetGame = function() {
-    console.log('reset');
-    app.gameOn = false;
-    app.sequence = [];
+
+  app.nextPlay = function(event) {
+    app.gameOn = true;
+    app.playersTurn = false;
+    app.createSequence();
+    app.playSequence(0);
+    console.log(`current sequence: ${app.sequence}`);
   };
 
-  app.startGame = function() {
-    console.log('start');
-    app.gameOn = true;
-    app.createSequence();
-    app.playSequence();
-    console.log(app.sequence);
+  app.playSequence = function(i) {
+    if (i < app.sequence.length) {
+      app.play(app.buttons[app.sequence[i]]);
+      window.setTimeout( function() {
+        console.log('i: ' + i);
+        app.playSequence(i+1);
+      }, 1000);
+    } else {
+      app.playersTurn = true;
+      app.counter = 0;
+    }
   };
 
   app.createSequence = function() {
@@ -155,12 +222,11 @@
       'Steps: ' + app.sequence.length;
   };
 
-  /* TODO:
-   * this plays the sequences too fast - why is not the setTimeout working? */
-  app.playSequence = function() {
-    app.sequence.forEach( function(element, index) {
-      app.play(app.buttons[element]);
-    });
+  app.resetGame = function(event) {
+    console.log('reset');
+    app.gameOn = false;
+    app.sequence = [];
+    document.getElementById('step-counter').innerHTML = 'Steps: 00';
   };
 
   /**
@@ -177,8 +243,6 @@
 
   window.onload = function() {
     console.log('loaded javascript');
+    app.setupSquareEventListeners();
   };
-
-  // this allows me to set values from javascript
-})();
-// vim: set foldmethod=syntax :
+})(window, document);

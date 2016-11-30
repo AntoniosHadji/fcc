@@ -50,7 +50,7 @@
       <header class="mdl-layout__header">
         <div class="mdl-layout__header-row">
           <!-- Title -->
-          <span class="mdl-layout-title">Simon</span>
+          <span id="title" class="mdl-layout-title">Simon</span>
           <!-- Add spacer, to align navigation to the right -->
           <div class="mdl-layout-spacer"></div>
           <!-- Navigation. We hide it in small screens. -->
@@ -93,11 +93,9 @@
             </label>
           </div> <!-- cell -->
 
-          <div class="mdl-cell mdl-cell--1-col">
+          <div class="mdl-cell mdl-cell--2-col">
             <!-- Button Chip -->
-            <button type="button" class="mdl-chip">
               <span id="step-counter" class="mdl-chip__text">Steps: 00</span>
-            </button>
           </div> <!-- cell -->
 
         </div> <!--toolbar -->
@@ -123,6 +121,8 @@
       </div> <!-- page-content -->
       </main>
     </div>
+
+
     <footer>
       <audio id="sound-green"
              src="https://s3.amazonaws.com/freecodecamp/simonSound1.mp3"></audio>
@@ -132,6 +132,9 @@
              src="https://s3.amazonaws.com/freecodecamp/simonSound3.mp3"></audio>
       <audio id="sound-blue"
              src="https://s3.amazonaws.com/freecodecamp/simonSound4.mp3"></audio>
+      <audio id="sound-wrong"
+             src="https://dl.dropboxusercontent.com/u/33784145/Audio/Wrong-answer-sound-effect.mp3">
+      </audio>
       <!-- Built with love using Web Starter Kit -->
     </footer>
     <section name='loadJavascripts'>
