@@ -3,8 +3,7 @@
   "version": "1.0.0",
   "description": "Learning javascript",
   "main": "test.js",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "Antonios Hadjigeorgalis",
   "license": "MIT",
   "devDependencies": {
@@ -14,6 +13,7 @@
     "mocha": "*"
   },
   "dependencies": {
+    "bl": "^1.1.2",
     "moment": "^2.17.0"
   }
 }
