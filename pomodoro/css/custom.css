@@ -1,6 +1,9 @@
 body {
   font-family: 'Roboto', sans-serif;
   /* body padding for fixed nav bar */
+}
+
+#controls {
   padding-top: 70px;
 }
 
@@ -24,7 +27,9 @@ body {
 
 }
 
-
+.xa-width-text {
+  width: 10rem;
+}
 
 .test {
   background-color: lightgrey

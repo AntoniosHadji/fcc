@@ -10,9 +10,10 @@
 
     <!-- Bootstrap -->
     <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" type="text/css" crossorigin="anonymous"
-                                           href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-                                           integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u">
+    <link rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css"
+      integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B"
+      crossorigin="anonymous">
     <!-- Google Fonts -->
     <link rel="stylesheet" type="text/css"
                            href="https://fonts.googleapis.com/css?family=Roboto">
@@ -23,18 +24,15 @@
   <body>
 
     <!-- Navigation {{{-->
-    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
-      <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Pomodoro Timer</a>
-        </div>
+    <nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+      <a class="navbar-brand" href="#">Pomodoro Timer</a>
+        <button class="navbar-toggler" type="button"
+          data-toggle="collapse"
+          data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent"
+          aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"><!----></span>
+        </button>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -44,48 +42,57 @@
             <li><a href="https://www.freecodecamp.com/challenges/build-a-pomodoro-clock">About</a></li>
           </ul>
         </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav> <!-- }}} -->
+    </nav>
+    <!-- }}} -->
 
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-4 col-lg-offset-4">
+    <main class="container">
+      <div class="row justify-content-center">
+        <div class="col col-4 align-self-center">
 
-          <div class="input-group input-group-lg ">
-            <div class="input-group-addon ">Pomodoro Length: </div>
-            <input id="ptime" class="form-control "
-                              type="number" min="25" max="120" value="25" step="5"/>
-          </div>
-
-          <div class="input-group input-group-lg">
-            <div class="input-group-addon ">Break Length: </div>
-            <input id="btime" class="form-control "
-                              type="number" min="5" max="30" value="5" step="5"/>
-          </div>
-
-          <div class="btn-group btn-group-justified" role="group">
-            <div class="btn-group" role="group">
-              <button id="startTimer" class="btn btn-success disabled">Start</button>
+          <section id='controls'>
+            <div class='input-group mb-3'>
+              <div class='input-group-prepend'>
+                <div class="input-group-text xa-width-text">Pomodoro Length: </div>
+              </div>
+              <input id="ptime"
+                     class="form-control "
+                     type="number" min="25" max="120" value="25" step="5"/>
             </div>
-            <div class="btn-group" role="group">
-              <button id="resetTimer" type="button" class="btn btn-danger disabled"> Reset </button>
+            <div class='input-group mb-3'>
+              <div class='input-group-prepend'>
+                <div class="input-group-text xa-width-text">Break Length: </div>
+              </div>
+              <input id="btime"
+                     class="form-control "
+                     type="number" min="5" max="30" value="5" step="5"/>
             </div>
-          </div>
 
-        </div>
-      </div>
+                <button id="startTimer" class="btn btn-success disabled">Start</button>
+                <button id="resetTimer" type="button" class="btn btn-danger disabled"> Reset </button>
+          </section>
 
-      <div id="pomodoro" class="row text-center"></div>
+        </div> <!-- end column -->
+      </div> <!-- end row -->
 
-    </div> <!-- end container -->
+      <div id="pomodoro" class="row justify-content-center"></div>
+
+    </main>
 
     <footer> <!-- {{{ -->
-      <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-      <!-- Include all compiled plugins (below), or include individual files as needed -->
-      <!-- Latest compiled and minified JavaScript -->
-      <script async src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-                    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+      <!-- Bootstrap's JavaScript plugins -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous">
+      </script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+        crossorigin="anonymous">
+      </script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"
+        integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em"
+        crossorigin="anonymous">
+      </script>
+
       <!-- font Awesome -->
       <script async src="https://use.fontawesome.com/ad58200bed.js"></script>
       <!-- Custom scripting -->
