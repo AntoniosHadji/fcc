@@ -10,8 +10,9 @@ $(document).ready(function () {
   })
 })
 
+// https://market.mashape.com/andruxnet/random-famous-quotes
 function getQuote () {
-  $.ajax({
+  return $.ajax({
     url: 'https://andruxnet-random-famous-quotes.p.mashape.com/?cat=famous',
     type: 'POST', // The HTTP Method, can be GET POST PUT DELETE etc
     data: {}, // Additional parameters here
@@ -27,8 +28,8 @@ function getQuote () {
 }
 
 function displayResponse (data) {
-  $('#quote').html(data.quote)
-  $('#author').html(data.author)
+  $('#quote').html(data[0].quote)
+  $('#author').html(data[0].author)
 
   // these are various ways to search for elements
   // both of these worked
