@@ -27,9 +27,8 @@ body {
 
 .table-cell {
     display:table-cell;
-    vertical-align:middle;
     font-weight:900; /* 900 = boldest */
-    font-size: 16vw;
+    font-size: 16vmin;
 }
 
 .table-cell:hover {
